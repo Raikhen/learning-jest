@@ -1,6 +1,6 @@
 # Passage to consciousness
 ## Matchers
-For a complete list check https://jestjs.io/docs/en/expect.
+For a complete list, check https://jestjs.io/docs/en/expect.
 
 ### Equality:
 - `expect().toBe` checks if pointers are pointing to the same thing.
@@ -70,3 +70,7 @@ You can use describe() to group tests.
 
 ### Debugging
 To find testing bugs, you can use test.only() instead of test(), and it will be the only test to run.
+
+## Mock functions
+We can define testeable functions with `jest.fn()`.
+We can `jest.mock()` stuff to simulate modules.
