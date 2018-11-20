@@ -1,12 +1,37 @@
-import next     from 'next'
-import express  from 'express'
+import next               from 'next'
+import express            from 'express'
+import { GraphQLServer }  from 'graphql-yoga'
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+const typeDefs = `
+  type Query {
+    hello(name: String): String!
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello(root, args, ctx, info) {
+      const { name } = args
+      return `Hello${name ? `, ${name}` : ''}!`
+    }
+  }
+}
+
 app.prepare().then(() => {
+  // API
+  const api = new GraphQLServer({
+    typeDefs,
+    resolvers
+  })
+
+  api.start(() => console.log('API running!'))
+
+  // Server
   const server = express()
 
   server.get('*', (req, res) => {
