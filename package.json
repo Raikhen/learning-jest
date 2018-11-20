@@ -8,10 +8,14 @@
     "build": "next build",
     "start": "NODE_ENV=production nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["learning", "jest", "testing"],
+  "author": "Raikhen",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^1.18.6"
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "nodemon": "^1.18.6",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   }
 }
