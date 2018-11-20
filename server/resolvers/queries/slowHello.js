@@ -7,4 +7,4 @@ const slowHello = async (root, args, ctx, info) => {
   })
 }
 
-module.exports = slowHello
+export default slowHello

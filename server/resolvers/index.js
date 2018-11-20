@@ -1,5 +1,5 @@
-const hello = require('./queries/hello')
-const slowHello = require('./queries/slowHello')
+import hello      from './queries/hello'
+import slowHello  from './queries/slowHello'
 
 const resolvers = {
   Query: {

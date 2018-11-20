@@ -1,8 +1,8 @@
-const next = require('next')
-const express = require('express')
-const { GraphQLServer } = require('graphql-yoga')
+import next               from 'next'
+import express            from 'express'
+import { GraphQLServer }  from 'graphql-yoga'
 
-const resolvers = require('./resolvers')
+import resolvers          from './resolvers'
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'

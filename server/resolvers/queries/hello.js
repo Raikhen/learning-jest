@@ -3,4 +3,4 @@ const hello = (root, args, ctx, info) => {
   return `Hello${name ? `, ${name}` : ''}!`
 }
 
-module.exports = hello
+export default hello
