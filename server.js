@@ -10,6 +10,7 @@ const handle = app.getRequestHandler()
 const typeDefs = `
   type Query {
     hello(name: String): String!
+    slowHello(name: String): String!
   }
 `
 
@@ -18,6 +19,14 @@ const resolvers = {
     hello(root, args, ctx, info) {
       const { name } = args
       return `Hello${name ? `, ${name}` : ''}!`
+    },
+    async slowHello(root, args, ctx, info) {
+      return await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const { name } = args
+          resolve(`Hello${name ? `, ${name}` : ''}!`)
+        }, 5000)
+      })
     }
   }
 }
