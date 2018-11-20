@@ -1,6 +1,8 @@
-import next               from 'next'
-import express            from 'express'
-import { GraphQLServer }  from 'graphql-yoga'
+const next = require('next')
+const express = require('express')
+const { GraphQLServer } = require('graphql-yoga')
+
+const resolvers = require('./resolvers')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -13,23 +15,6 @@ const typeDefs = `
     slowHello(name: String): String!
   }
 `
-
-const resolvers = {
-  Query: {
-    hello(root, args, ctx, info) {
-      const { name } = args
-      return `Hello${name ? `, ${name}` : ''}!`
-    },
-    async slowHello(root, args, ctx, info) {
-      return await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          const { name } = args
-          resolve(`Hello${name ? `, ${name}` : ''}!`)
-        }, 5000)
-      })
-    }
-  }
-}
 
 app.prepare().then(() => {
   // API
